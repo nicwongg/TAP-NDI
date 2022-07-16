@@ -1,6 +1,25 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css') }}">
+
 {% extends 'base.html' %}
 
 {% block content %}
+
+<div class="text-center">
+    <p>
+    <blockquote class="blockquote">
+        Check if the person calling you is a public officer!
+    </blockquote>
+    </p>
+    <a class="btn btn-danger" role="button" href="{{ url_for('call_records')}}">Login with Singpass</a>
+    <br><br>
+    <ul>
+        <li>Verify if the caller is indeed a public officer</li>
+        <li>You will be able to see if there is indeed an ongoing call with you right now</li>
+        <li>You will be able to see the name and the ministry of the caller</li>
+        <li>This is a mock login using Singpass</li>
+    </ul>
+</div>
+
 
 
 {% endblock %}

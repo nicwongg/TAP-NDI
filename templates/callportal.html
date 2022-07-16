@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css') }}">
+
+{% extends 'callerbase.html' %}
+
+{% block content %}
+
+{% if ongoing_call is equalto "" %}
+
+<div class="text-center">
+    <p>
+    <blockquote class="blockquote">
+        Enter the recipient's NRIC before you call them, this allows them to verify your identity
+    </blockquote>
+    </p>
+    <form action="/startcall" method="POST">
+        <input type="hidden" name="email" , id="email" , value="{{email}}">
+        <div class="form-floating mb-3">
+            <input type="text" name="nric" id="nric" class="form-control" value="S****252G" autofocus></input>
+            <label for="nric">NRIC</label>
+        </div>
+        <button type="submit" class="btn text-light btn-md" style="background-color: #506355;">Proceed with
+            call</button>
+    </form>
+</div>
+
+{% else %}
+
+<p>
+<blockquote class="blockquote">
+    You have a call in progress, the callee's NRIC is {{ongoing_call[1]}}.
+    <form action="/endcall" method="POST">
+        <input type="hidden" name="email" , id="email" , value="{{email}}">
+        <button type="submit" class="btn text-light btn-md" style="background-color: #506355;">Call ended</button>
+    </form>
+</blockquote>
+You can let the callee know that they can verify your identity by going to sgVerifyCall's website.
+</p>
+
+{% endif %}
+
+{% endblock %}

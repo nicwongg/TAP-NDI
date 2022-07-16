@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if ongoing is equalto {} and ended is equalto [] %}
+<div class="text-center">
+    <p>
+        You do not have any ongoing calls or previous calls!
+    </p>
+    <p>
+        If you are currently on a call with someone that claims to be a public officer, please ask them to login to
+        sgVerifyCall to verify their identity.
+    </p>
+</div>
+{% else %}
+<br>
+
+{% if ongoing is not equalto {} %}
+
+<div class="text-center">
+    <p class="text-success">
+        You are currently on a call with <b>{{ongoing['caller_name']}}</b> from <b>{{ongoing['caller_ministry']}}</b>.
+    </p>
+    <p>
+        Please make sure to confirm the identity of the caller.
+    </p>
+</div>
+
+{% else %}
+<div class="text-center">
+    <p class="text-danger">
+        You do not have any ongoing calls.
+    </p>
+    <p>
+        If you are currently on a call with someone that claims to be a public officer, please ask them to login to
+        sgVerifyCall to verify their identity.
+    </p>
+</div>
+{% endif %}
+
+<h3 class="pt-3">Previous calls</h3>
+<table class="table table-hover">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th scope="col">Caller Name</th>
+            <th scope="col">Associated Ministry</th>
+            <th scope="col">Call Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for call in ended %}
+        <tr class="text">
+            <td scope="row">{{call['caller_name']}}</td>
+            <td>{{call['caller_ministry']}}</td>
+            <td>{{call['call_datetime']}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

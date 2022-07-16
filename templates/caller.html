@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/index.css') }}">
+
+{% extends 'callerbase.html' %}
+
+{% block content %}
+
+<div class="text-center">
+    <p>
+    <blockquote class="blockquote">
+        Login to sgVerifyCall with your government email address
+    </blockquote>
+    </p>
+    <form action="/callerlogin" method="POST">
+        <div class="form-floating mb-3">
+            <input type="text" name="email" id="email" class="form-control" value="tom@moe.gov.sg" autofocus></input>
+            <label for="email">Email</label>
+        </div>
+        <button type="submit" class="btn text-light btn-md" style="background-color: #506355;">Login</button>
+    </form>
+</div>
+
+{% if result is not equalto "" %}
+<p class="text-danger">
+    {{ result }}
+</p>
+{% endif %}
+{% endblock %}
