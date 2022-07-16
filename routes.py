@@ -1,5 +1,5 @@
-from flask import Flask, redirect, render_template, request
-from helper_functions import *
+from flask import Flask, render_template, request
+from helper_functions import login_caller, get_ongoing_call_details, has_ongoing_call, get_call_records, mark_call_as_ended, mark_call_as_ongoing
 
 app = Flask(__name__)
 
@@ -16,10 +16,10 @@ def caller():
 
 @app.route("/call_records")
 def call_records():
-    call_records = get_call_records("S****252G")
+    call_records_res = get_call_records("S****252G")
     ended = []
     ongoing = {}
-    for call in call_records:
+    for call in call_records_res:
         if call['call_status'] == 'Ended':
             ended.append(call)
         else:
