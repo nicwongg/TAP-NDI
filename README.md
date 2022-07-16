@@ -16,9 +16,18 @@ To have a proactive solution that allow citizens to verify if the caller is inde
 ### Used service
 - Singpass login
 
+### Architecture
+The application is containerized and hosted on AWS Fargate. There is a CI/CD pipeline that runs tests, containerizes, and deploys the new versions into AWS ECR and Fargate.
+
+![Architecture Diagram](https://i.ibb.co/KWRJgzC/TAP-NDI.png)
+
+### Wireframing
+![Wireframe](https://gcdnb.pbrd.co/images/PYCPd1W254HH.png?o=1)
+
 ### Future implementation
-In the current implementation, the solution would be for governmental ministries.
-In future implementations, this could be extended to private organisations such as banks and even e-commerce platforms, where a huge portion of scam calls are prevalent.
+In the current implementation, the solution is only for governmental ministries. In future implementations, this could be extended to private organisations such as banks and even e-commerce platforms, where a huge portion of scam calls are prevalent.
+
+It would be best to have this as an additional feature (callee only) in our Singpass application as most people should already have the Singpass application in their phone.
 
 ## Set up information
 Callee portal: localhost:5000
@@ -34,7 +43,3 @@ To run it locally, you can run the `flask run` command in the main directory.
 
 ### Hosting
 The application is also hosted on Amazon ECS: `3.0.103.102:5000`
-
-### Assumptions: 
-1. The web application will only be used to store one round of team and match information.
-2. There will always only have 4 teams of each groups to advance (no tying for two top 4 teams)
