@@ -31,7 +31,8 @@ It would be best to have this as an additional feature (callee only) in our Sing
 
 ## Set up information
 Callee portal: localhost:5000
-Caller portal: localhost:5000/callerlogin
+
+Caller portal: localhost:5000/caller
 
 The callee side will always use `S****252G` when logging in - this is to mock the id that's provided/used by Singpass.
 So the caller should use `S****252G` when prompted for the NRIC to key in.
@@ -42,4 +43,4 @@ Available caller emails for use `bob@moh.gov.sg`, `jerry@mom.gov.sg`, `james@moh
 To run it locally, you can run the `flask run` command in the main directory.
 
 ### Hosting
-The application is also hosted on Amazon ECS: `3.0.103.102:5000`
+The application is also hosted on Amazon ECS: `54.251.11.192:5000`
